@@ -147,7 +147,7 @@ class PdfLoader(FileLoader):
 
         vector = self.embedding_vector_store()
         
-        llm = OpenAI(api_key=os.getenv("openaiKey"))
+        llm = OpenAI(api_key=st.secrets["openaiKey"])
         retriever = RetrievalQA.from_chain_type(
             llm=llm,
             retriever=vector.as_retriever(search_type="mmr"),
@@ -198,7 +198,7 @@ class TxtLoader(FileLoader):
 
         vector = self.embedding_vector_store()
         
-        llm = OpenAI(api_key=os.getenv("openaiKey"))
+        llm = OpenAI(api_key=st.secrets["openaiKey"])
         retriever = RetrievalQA.from_chain_type(
             llm=llm,
             retriever=vector.as_retriever(search_type="mmr"),
